@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "SNDWAY SW-525B Sound Level Meter",
+        "description": "Plug the sound level meter into a USB port on the Home Assistant host. The defaults match the SW-525B; only change the vendor/product IDs if `lsusb` reports something different.",
+        "data": {
+          "vid": "USB vendor ID (hex)",
+          "pid": "USB product ID (hex)",
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not open the USB device. Check that it is plugged in and that Home Assistant is allowed to access it.",
+      "invalid_id": "The vendor and product IDs must be hexadecimal, for example 0483.",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This meter is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "SNDWAY SW-525B options",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "sound_pressure_level": {
+        "name": "Sound pressure level"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "domain": "sndway_spl",
+  "name": "SNDWAY SW-525B Sound Level Meter",
+  "codeowners": ["@Doridian"],
+  "config_flow": true,
+  "documentation": "https://github.com/FoxDenHome/hass-sndway-sw525b",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/FoxDenHome/hass-sndway-sw525b/issues",
+  "requirements": ["pyusb==1.3.1"],
+  "version": "0.1.0"
+}
