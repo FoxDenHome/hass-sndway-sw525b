@@ -2,8 +2,8 @@
 
 Home Assistant custom integration for the **SNDWAY SW-525B** digital sound level
 meter, connected over USB. It exposes a single **Sound pressure level** sensor
-(`dB`, `measurement` state class) that you can use in history, statistics,
-automations and dashboards.
+(`dBA`, `measurement` state class) that you can use in history, statistics,
+automations and dashboards. The SW-525B always measures with A-weighting.
 
 Repo: <https://github.com/FoxDenHome/hass-sndway-sw525b>
 
@@ -74,8 +74,8 @@ driver; it re-attaches the driver again when the config entry is unloaded.
 
 ## Notes & limitations
 
-* The value is reported as plain `dB`. The SW-525B applies A/C weighting on the
-  device and the packet does not indicate which, so no `dBA` distinction is made.
+* The value is reported as `dBA`. The SW-525B always applies A-weighting on the
+  device (it has no C-weighting mode), so the reading is always A-weighted.
 * A single poll timeout is retried a few times before the sensor goes
   `unavailable`; a fatal USB error drops the handle and it is reopened on the next
   poll.

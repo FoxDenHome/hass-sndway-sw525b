@@ -30,12 +30,13 @@ async def async_setup_entry(
 
 
 class SndwaySoundPressureSensor(CoordinatorEntity[SndwayCoordinator], SensorEntity):
-    """Reports the meter's current reading in decibels."""
+    """Reports the meter's current A-weighted reading in decibels (dBA)."""
 
     _attr_has_entity_name = True
     _attr_translation_key = "sound_pressure_level"
     _attr_device_class = SensorDeviceClass.SOUND_PRESSURE
-    _attr_native_unit_of_measurement = UnitOfSoundPressure.DECIBEL
+    # The SW-525B always applies A-weighting on the device, so the reading is dBA.
+    _attr_native_unit_of_measurement = UnitOfSoundPressure.WEIGHTED_DECIBEL_A
     _attr_state_class = SensorStateClass.MEASUREMENT
     _attr_suggested_display_precision = 1
 
@@ -54,5 +55,5 @@ class SndwaySoundPressureSensor(CoordinatorEntity[SndwayCoordinator], SensorEnti
 
     @property
     def native_value(self) -> float | None:
-        """Return the latest decibel reading."""
+        """Return the latest A-weighted decibel reading."""
         return self.coordinator.data

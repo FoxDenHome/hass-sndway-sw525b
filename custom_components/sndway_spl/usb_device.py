@@ -3,7 +3,7 @@
 This is a straight port of the reverse-engineered C++ reference in ``main.cpp``:
 write a one-byte ``0xB3`` query to the interrupt OUT endpoint, wait briefly, then
 read an interrupt IN packet whose first two bytes are a big-endian value in tenths
-of a decibel.
+of a decibel. The SW-525B always measures with A-weighting, so the value is dBA.
 
 Everything in this module is blocking and must be run in an executor thread.
 """
@@ -81,7 +81,7 @@ class SndwaySoundLevelMeter:
             self._close_locked()
 
     def read_db(self) -> float:
-        """Return the current sound pressure level in dB.
+        """Return the current A-weighted sound pressure level in dBA.
 
         Opens the device on first use and reopens it after a fatal USB error.
         Transient timeouts are retried a few times before giving up.

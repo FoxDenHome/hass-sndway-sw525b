@@ -16,7 +16,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class SndwayCoordinator(DataUpdateCoordinator[float]):
-    """Query the meter on a fixed interval and hand out the latest dB reading."""
+    """Query the meter on a fixed interval and hand out the latest dBA reading."""
 
     def __init__(
         self,
